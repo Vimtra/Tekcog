@@ -1,21 +1,38 @@
 import { Routes, Route, useLocation, useSearchParams } from "react-router-dom";
 import { Header, TabNames } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-import { Contact } from "./components/Contact/Contact";
-import { Home } from "./components/Home/Home";
-import { Services } from "./components/Services/Services";
-import { Apply } from "./components/Apply/Apply";
-import { About } from "./components/About/About";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { MenuItemProps } from "semantic-ui-react";
 // import { Mobile } from "./components/MobileF/Mobile";
 import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
 import Tlogo from "./images/Tlogobig.png";
-import Tgif from "./images/TEkCOG.gif";
-import Tgif2 from "./images/Tgif02.gif";
 import $ from "jquery";
 
 import "./App.css";
+
+const Home = lazy(() =>
+  import("./components/Home/Home").then((module) => ({ default: module.Home })),
+);
+const Services = lazy(() =>
+  import("./components/Services/Services").then((module) => ({
+    default: module.Services,
+  })),
+);
+const Apply = lazy(() =>
+  import("./components/Apply/Apply").then((module) => ({ default: module.Apply })),
+);
+const Contact = lazy(() =>
+  import("./components/Contact/Contact").then((module) => ({ default: module.Contact })),
+);
+const About = lazy(() =>
+  import("./components/About/About").then((module) => ({ default: module.About })),
+);
+
+const PageLoader = () => (
+  <div className="page-loading" style={{ minHeight: "60vh", display: "grid", placeItems: "center" }}>
+    <span>Loading...</span>
+  </div>
+);
 
 const SplashScreen = () => {
   useEffect(() => {
@@ -47,25 +64,6 @@ const SplashScreen = () => {
   );
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Use Intersection Observer to determine if objects are within the viewport
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-        return;
-      }
-      entry.target.classList.remove("in-view");
-    });
-  });
-
-  // Get all the elements with the .animate class applied
-  const allAnimatedElements = document.querySelectorAll(".animate");
-
-  // Add the observer to each of those elements
-  allAnimatedElements.forEach((element) => observer.observe(element));
-});
-
 export const App = () => {
   const [activeItem, setActiveItem] = useState<TabNames>(TabNames.HOME);
   const location = useLocation();
@@ -83,7 +81,6 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    // Intersection Observer to determine if objects are within the viewport
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -94,30 +91,10 @@ export const App = () => {
       });
     });
 
-    // Function to observe all elements with the .animate class
-    const observeElements = () => {
-      const allAnimatedElements = document.querySelectorAll(".animate");
-      allAnimatedElements.forEach((element) => observer.observe(element));
-    };
+    document.querySelectorAll(".animate").forEach((element) => observer.observe(element));
 
-    // Observe initial elements
-    observeElements();
-
-    // MutationObserver to detect DOM changes
-    const mutationObserver = new MutationObserver(() => {
-      observeElements(); // Reapply IntersectionObserver to new elements
-    });
-
-    // Observe the body for changes
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
-
-    return () => {
-      // Cleanup IntersectionObserver
-      observer.disconnect();
-      // Cleanup MutationObserver
-      mutationObserver.disconnect();
-    };
-  }, []); // Re-run when `trigger` changes
+    return () => observer.disconnect();
+  }, []);
 
   const changeNavBg = () => {
     window.scrollY >= 150 ? setNavBg(true) : setNavBg(false);
@@ -133,10 +110,9 @@ export const App = () => {
     window.scrollTo(0, 0);
   };
 
-  let [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   useEffect(() => {
     const pathname1 = location.pathname.split("?")[0];
-    console.log(pathname1, "ssssss");
 
     switch (pathname1) {
       case "/services":
@@ -166,7 +142,6 @@ export const App = () => {
   ) => {
     if (data.name) {
       setActiveItem(data.name as TabNames);
-      console.log(data.name, TabNames.SERVICES, "namesssss");
 
       if (data.name === TabNames.SERVICES) {
         setSearchParams({ q: "Class_Student" });
@@ -181,13 +156,15 @@ export const App = () => {
       ) : (
         <>
           <Header activeItem={activeItem} handleItemClick={handleItemClick} />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/apply" element={<Apply />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about-us" element={<About />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/apply" element={<Apply />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/about-us" element={<About />} />
+            </Routes>
+          </Suspense>
           <Footer activeItem={activeItem} handleItemClick={handleItemClick} />
 
           <ArrowUpwardOutlinedIcon
