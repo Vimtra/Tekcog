@@ -1,0 +1,42 @@
+:root {
+  /* --primary: #139c49; */
+  --primary: #88F2FF;
+  --secondary: #E9EED9;
+  --active-link: #0082f3;
+  --active-tab: #8abaf1;
+  --active-tab-border:transparent;
+  --white: #ffffff;
+  --line:#9747FF;
+  --active-tabM: black;
+  --text1:white
+  }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+  height: auto;
+  font-size: 16px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.primary.button {
+  background-color: var(--primary1) !important;
+}
+
+@media (min-width: 900px) {
+    .mobile-bar {
+        display: none;
+    }
+
+    .body {
+      height: 100vh;
+    }
+}

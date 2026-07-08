@@ -1,0 +1,15 @@
+# Disable MultiViews to avoid content negotiation conflicts
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # If the request is not for an existing file or directory, serve index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Fallback 404 to index.html so SPA routing still works
+ErrorDocument 404 /index.html
