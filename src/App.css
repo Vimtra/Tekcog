@@ -246,6 +246,7 @@ height: 200px; */
 @font-face {
   font-family: mont;
   src: url(../public/Montserrat-SemiBold.ttf);
+  font-display: swap;
 }
 .inria{
   font-family: mont;
@@ -253,6 +254,7 @@ height: 200px; */
 @font-face {
   font-family: montL;
   src: url(../public/Montserrat-Light.ttf);
+  font-display: swap;
 }
 .inria{
   font-family: montL;
@@ -260,6 +262,7 @@ height: 200px; */
 @font-face {
   font-family: montM;
   src: url(../public/Montserrat-Medium.ttf);
+  font-display: swap;
 }
 .inria{
   font-family: montM;

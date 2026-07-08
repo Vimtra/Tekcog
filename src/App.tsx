@@ -1,30 +1,42 @@
 import { Routes, Route, useLocation, useSearchParams } from "react-router-dom";
 import { Header, TabNames } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-import { Contact } from "./components/Contact/Contact";
 import { Home } from "./components/Home/Home";
-import { Services } from "./components/Services/Services";
-import { Apply } from "./components/Apply/Apply";
-import { About } from "./components/About/About";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { MenuItemProps } from "semantic-ui-react";
 // import { Mobile } from "./components/MobileF/Mobile";
 import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
 import Tlogo from "./images/Tlogobig.png";
-import Tgif from "./images/TEkCOG.gif";
-import Tgif2 from "./images/Tgif02.gif";
-import $ from "jquery";
 
 import "./App.css";
 
+// Route-based code splitting: these pages are not needed on the initial
+// (Home) load, so they are loaded on demand to shrink the entry bundle.
+const Contact = lazy(() =>
+  import("./components/Contact/Contact").then((m) => ({ default: m.Contact })),
+);
+const Services = lazy(() =>
+  import("./components/Services/Services").then((m) => ({
+    default: m.Services,
+  })),
+);
+const Apply = lazy(() =>
+  import("./components/Apply/Apply").then((m) => ({ default: m.Apply })),
+);
+const About = lazy(() =>
+  import("./components/About/About").then((m) => ({ default: m.About })),
+);
+
 const SplashScreen = () => {
   useEffect(() => {
-    // Execute the jQuery logic after the component mounts
-    const welcomeSection = $(".welcome-section");
-
-    setTimeout(() => {
-      welcomeSection.removeClass("content-hidden");
+    // Reveal the welcome section shortly after mount (vanilla DOM; no jQuery).
+    const timer = setTimeout(() => {
+      document
+        .querySelector(".welcome-section")
+        ?.classList.remove("content-hidden");
     }, 800); // Adjust the delay as needed
+
+    return () => clearTimeout(timer);
   }, []);
   return (
     <div className="splash-screen">
@@ -181,13 +193,15 @@ export const App = () => {
       ) : (
         <>
           <Header activeItem={activeItem} handleItemClick={handleItemClick} />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/apply" element={<Apply />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about-us" element={<About />} />
-          </Routes>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/apply" element={<Apply />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/about-us" element={<About />} />
+            </Routes>
+          </Suspense>
           <Footer activeItem={activeItem} handleItemClick={handleItemClick} />
 
           <ArrowUpwardOutlinedIcon

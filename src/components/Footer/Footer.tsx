@@ -270,11 +270,13 @@ explore the Resources</h1>
         </div>
 
         <div className="footer__item1">
-          <img src={Tlogo} alt="tekcog" className="tlogoF" />
+          <img src={Tlogo} alt="tekcog" className="tlogoF" loading="lazy" decoding="async" />
           <img
             src={LogoText}
             alt="tekcog"
             className="tlogoText"
+            loading="lazy"
+            decoding="async"
             height={70}
             style={{ marginTop: "-30px", marginBottom: "20px" }}
           />

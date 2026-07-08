@@ -892,7 +892,7 @@ export const Home = () => {
               </a>
             </div>
             <div className="count">
-              <img src={users} className="iconImg" />
+              <img src={users} className="iconImg" loading="lazy" decoding="async" />
               <h1>
                 200+
                 <br></br>
@@ -901,7 +901,7 @@ export const Home = () => {
             </div>
           </div>
         </figure>
-        <img src={Tlogo} className="imageBig2" />
+        <img src={Tlogo} className="imageBig2" loading="lazy" decoding="async" />
       </div>
       <div className="section3">
         <a>WHAT WE DO</a>
@@ -909,8 +909,8 @@ export const Home = () => {
         <div className="sevices_in ">
           <div className="sevices_box animate">
             <div className="img_box">
-              <img src={ai} className="animeImg" />
-              <img src={genai} className="animeImg_hover" />
+              <img src={ai} className="animeImg" loading="lazy" decoding="async" />
+              <img src={genai} className="animeImg_hover" loading="lazy" decoding="async" />
             </div>
             <div className="text_box">
               <a>Generative AI</a>
@@ -924,8 +924,8 @@ export const Home = () => {
           </div>
           <div className="sevices_box animate">
             <div className="img_box">
-              <img src={staff} className="animeImg" />
-              <img src={staffA} className="animeImg_hover" />
+              <img src={staff} className="animeImg" loading="lazy" decoding="async" />
+              <img src={staffA} className="animeImg_hover" loading="lazy" decoding="async" />
             </div>
 
             <div className="text_box">
@@ -939,8 +939,8 @@ export const Home = () => {
           </div>
           <div className="sevices_box animate">
             <div className="img_box">
-              <img src={devops} className="animeImg" />
-              <img src={devImg} className="animeImg_hover" />
+              <img src={devops} className="animeImg" loading="lazy" decoding="async" />
+              <img src={devImg} className="animeImg_hover" loading="lazy" decoding="async" />
             </div>
             <div className="text_box">
               <a>DevOps & Automation</a>
@@ -953,8 +953,8 @@ export const Home = () => {
           </div>
           <div className="sevices_box animate">
             <div className="img_box">
-              <img src={mobileDev} className="animeImg" />
-              <img src={mobiledev} className="animeImg_hover" />
+              <img src={mobileDev} className="animeImg" loading="lazy" decoding="async" />
+              <img src={mobiledev} className="animeImg_hover" loading="lazy" decoding="async" />
             </div>
             <div className="text_box">
               <a>Mobile App Development</a>
@@ -977,49 +977,49 @@ export const Home = () => {
         <h1>Our Clients</h1>
         <div className="client_grid">
           <div className="client_box">
-            <img src={mindtree} className="client_img" />
+            <img src={mindtree} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={lt} className="client_img" />
+            <img src={lt} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={blue} className="client_img" />
+            <img src={blue} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={verizon} className="client_img" />
+            <img src={verizon} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={cbre} className="client_img" />
+            <img src={cbre} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={cvs} className="client_img" />
+            <img src={cvs} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={att} className="client_img" />
+            <img src={att} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={pngegg} className="client_img" />
+            <img src={pngegg} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={walmart} className="client_img" />
+            <img src={walmart} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={freddie} className="client_img" />
+            <img src={freddie} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={first} className="client_img" />
+            <img src={first} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={fuj} className="client_img" />
+            <img src={fuj} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={delta} className="client_img" />
+            <img src={delta} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={chevron} className="client_img" />
+            <img src={chevron} className="client_img" loading="lazy" decoding="async" />
           </div>
           <div className="client_box">
-            <img src={citibank} className="client_img" />
+            <img src={citibank} className="client_img" loading="lazy" decoding="async" />
           </div>
         </div>
 
@@ -1066,7 +1066,7 @@ export const Home = () => {
           <SwiperSlide className="slider">
             <div className="colab_box2">
               <div className="review_box">
-                <img src={stars} className="starsImg" />
+                <img src={stars} className="starsImg" loading="lazy" decoding="async" />
                 <FormatQuoteRoundedIcon className="iconQouts"></FormatQuoteRoundedIcon>
               </div>
               <h1>
@@ -1088,7 +1088,7 @@ export const Home = () => {
           <SwiperSlide className="slider">
             <div className="colab_box2">
               <div className="review_box">
-                <img src={stars} className="starsImg" />
+                <img src={stars} className="starsImg" loading="lazy" decoding="async" />
                 <FormatQuoteRoundedIcon className="iconQouts"></FormatQuoteRoundedIcon>
               </div>
               <h1>
@@ -1108,7 +1108,7 @@ export const Home = () => {
           <SwiperSlide className="slider">
             <div className="colab_box2">
               <div className="review_box">
-                <img src={stars} className="starsImg" />
+                <img src={stars} className="starsImg" loading="lazy" decoding="async" />
                 <FormatQuoteRoundedIcon className="iconQouts"></FormatQuoteRoundedIcon>
               </div>
               <h1>
@@ -1129,7 +1129,7 @@ export const Home = () => {
           <SwiperSlide className="slider">
             <div className="colab_box2">
               <div className="review_box">
-                <img src={stars} className="starsImg" />
+                <img src={stars} className="starsImg" loading="lazy" decoding="async" />
                 <FormatQuoteRoundedIcon className="iconQouts"></FormatQuoteRoundedIcon>
               </div>
               <h1>

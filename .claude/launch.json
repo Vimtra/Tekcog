@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tekcog-build-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "-s", "build", "-l", "4123"],
+      "port": 4123
+    }
+  ]
+}
